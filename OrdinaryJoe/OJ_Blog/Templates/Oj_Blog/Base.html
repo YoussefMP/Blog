@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% load static %}
+	<meta charset="UTF-8">
+	<title>Ordinary Joe</title>
+	<link rel="stylesheet" href="{% static 'OJ_Blog/css/Landing_Page.css' %}">
+
+</head>
+<body>
+
+		<header>
+			<div class="container">
+				<img src="{% static 'OJ_Blog/pictures/Titel4.png' %}" alt="Logo" class="logo">
+			</div>
+		</header>
+
+	{% block content %}
+	{% endblock content %}
+
+
+</body>
+</html>
