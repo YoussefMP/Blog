@@ -2,8 +2,8 @@
 db.sqlite3
 
 # Folders to ignore
-.idea
+.idea/
 venv/
 
-# Extra files 
+# Extra files
 *.pyc
