@@ -1,0 +1,73 @@
+{% extends 'Oj_Blog/Base.html' %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'OJ_Blog/css/LandingPage.css' %}">
+<link rel="stylesheet" href="{% static 'OJ_Blog/css/font.css' %}">
+<!--<script src="{% static 'OJ_Blog/scripts/scrollAnimation.js' %}" type="module" defer></script>-->
+
+<div id="root">
+    <!-- Welcome Picture -->
+    <div class='banner'></div>
+
+    <div class="class-tracker"></div>
+
+    <div class="posts-frame" >
+        <div id="posts-container">
+            {% for post in posts %}
+                    <div class="post-container">
+                        <div class="post">
+                            <div class="img-content">
+                                <a href="{% url 'Post_Page' post.title %}"><img src="{{post.image.url}}"></a>
+                            </div>
+                            <div class="text-content">
+                                <h1><a href="{% url 'Post_Page' post.title %}" style="color: black;">{{ post.title }}</a></h1>
+                                <a href="{% url 'Post_Page' post.title %}" style="color: black; text-decoration: none;"> {{ post.content|safe|slice:":500" }}{% if post.content|length > 500 %}...{% endif %}</a>
+                            </div>
+                        </div>
+                    </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+
+
+
+
+
+<!--         <div class="Odometer">
+          <div class="row justify-content-center mt-5" style="max-height:100px">
+            <div class="col-auto d-flex flex-column timer-part text-center" id="hh1">
+                {% for nb in numbers %}
+                  <h1 class="display-3">{{ nb }}</h1>
+                {% endfor %}
+                <h1 class="display-3 mb-3" id="hh1-main">&nbsp;</h1>
+            </div>
+            <div class="col-auto d-flex flex-column timer-part text-center" id="hh2">
+                {% for nb in numbers %}
+                  <h1 class="display-3">{{ nb }}</h1>
+                {% endfor %}
+              <h1 class="display-3 mb-3" id="hh2-main">4</h1>
+            </div>
+            <div class="col-auto d-flex flex-column timer-part text-center" id="symbol">
+                {% for nb in numbers %}
+                  <h1 class="display-3">{{ nb }}</h1>
+                {% endfor %}
+              <h1 class="display-3 mb-3" id="symbol-main">0</h1>
+            </div>
+            <div class="col-auto d-flex flex-column timer-part text-center" id="mm1">
+                {% for nb in numbers %}
+                  <h1 class="display-3">{{ nb }}</h1>
+                {% endfor %}
+              <h1 class="display-3 mb-3" id="mm1-main">8</h1>
+            </div>
+            <div class="col-auto d-flex flex-column timer-part text-center" id="mm2">
+                {% for nb in numbers %}
+                  <h1 class="display-3">{{ nb }}</h1>
+                {% endfor %}
+              <h1 class="display-3 mb-3" id="mm2-main">&nbsp;</h1>
+            </div>
+          </div>
+        </div> -->

@@ -1,0 +1,39 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  max-width: 100%;
+  overflow-x: hidden;
+  margin-bottom: 1%;
+}
+
+header {
+    background-color: #ffedcb;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 110px;
+    z-index: 9999;
+}
+
+.logo {
+    margin: 5px;
+    width: 250px;
+    height: 100px;
+}
+
+.banner {
+    margin-left: calc(50% - 50vw);
+    width: 100vw; height: 52.5vmin;
+    min-height: 13em;
+    background: linear-gradient(#000, transparent, #000),
+        var(--img) 50%/ cover;
+    background-attachment: fixed;
+    background-blend-mode: multiply;
+}
+.banner:nth-of-type(1) {
+    --img:  url("../pictures/MyDesk2.jpg");
+}

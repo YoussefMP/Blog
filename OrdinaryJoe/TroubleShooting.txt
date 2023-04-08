@@ -1,0 +1,20 @@
+[Problem: Forgot my admin username and password]
+ + Activate the virtual environment
+ + run command: python manage.py shell (starts the django shell)
+ + Run the following python commands to get the user from the database.
+    - from django.contrib.auth.models import User
+    - superusers = User.objects.filter(is_superuser=True)
+
+
+[How to enable the ckeditor image uploader]
+    403: Forbidden response from the server when I wanted to upload an Image in the RichTextUploadingField
+    404: Not Found response from the server when I opened the browse server tab
+    400: When sending to server
+
+    + setting the path of the editor in the OrdinaryJoe/urls.py
+        - path('ckeditor', include('ckeditor_uploader.urls')), has to be on top
+    + setting the paths of the editor in the OJ_Blog/urls.py
+        - path('ckeditorupload/', ckeditor_views.upload, name='ckeditor_upload'),
+        - path('ckeditorbrowse/', ckeditor_views.browse, name='ckeditor_browse'),
+    + setting the CKEDITOR_UPLOAD_PATH to an existing folder in the MEDIA path
+        - CKEDITOR_UPLOAD_PATH = 'OJ_Blog/pictures/'

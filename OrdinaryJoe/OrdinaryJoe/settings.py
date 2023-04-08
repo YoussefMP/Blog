@@ -16,7 +16,6 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -26,7 +25,7 @@ SECRET_KEY = 'django-insecure-gqw45nh0^^n3)&yn@o_l88u$mh_p*g2+u%fhtv+@#9v(00g&_-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -38,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # dependecies
+    "ckeditor",
+    "ckeditor_uploader",
 
     # Mine
     'OJ_Blog.apps.OjBlogConfig',
@@ -125,6 +128,17 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+CKEDITOR_IMAGE_BACKEND = "pillow"
+CKEDITOR_UPLOAD_PATH = 'OJ_Blog/pictures/'
+CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'  # URL of jQuery library
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        "CKEDITOR_BROWSE_SHOW_DIRS": True,
+        "CKEDITOR_RESTRICT_BY_USER": True,
+    }
+}
 
 
 # Default primary key field type

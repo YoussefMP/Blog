@@ -4,14 +4,16 @@
 	{% load static %}
 	<meta charset="UTF-8">
 	<title>Ordinary Joe</title>
-	<link rel="stylesheet" href="{% static 'OJ_Blog/css/Landing_Page.css' %}">
+	<link rel="stylesheet" href="{% static 'OJ_Blog/css/Base.css' %}">
+	<link rel="stylesheet" href="{% static 'OJ_Blog/css/font.css' %}">
+
 
 </head>
 <body>
 
 		<header>
 			<div class="container">
-				<img src="{% static 'OJ_Blog/pictures/Titel4.png' %}" alt="Logo" class="logo">
+				<a href="{% url 'blog-home' %}"><img src="{% static 'OJ_Blog/pictures/Titel4.png' %}" alt="Logo" class="logo"></a>
 			</div>
 		</header>
 
