@@ -23,3 +23,34 @@
     I could not access my website, it wass only possible if I typed the IPv4 of the instance followed by a port number
 	+ I installed nginx on the instance and then forwarded traffic from the port 80 (http) to my domain name
 	+ I created an A record with my domain name and gave it the IP of my instance
+
+[Permissions for 'Keys.pem' are too open.]
+	I encountered this error when I tried to push my code to github through ssh 
+		+ We need to restrict the permissions to the key
+		+ Linux
+			- chmod 400 path/to/key.pem
+		+ Windows 
+			- icacls "AWS/Resources/OJ Key Pair/OrdinaryJoe's Keys.pem"					# run this command to check the permissions
+			- If there are many users that can access it you need to remove any inherited permissions
+				- icacls "path/to/Keys.pem" /inheritance:r /grant:r "%USERNAME%":"(R)"
+
+[Server could not find static files anymore + Permission denied]
+	+ First added this to the nginx config file (/etc/nginx/nginx.conf):
+		"""
+		location /static/ {
+			 alias /home/ubuntu/Blog/OrdinaryJoe/OJ_Blog/static/;	
+		}
+		"""
+	this sets the path for the static folder and you should add one too for the media Folder if you have one (Both under server {...} block) 
+		
+
+	+ Then I got 13: Permission denied:
+		+ You need to change the ownership of the folders to www-data for every folder in the path and then give it rw permissions
+			- sudo chown -R www-data:www-data /home/<yourUserName>/
+			- sudo chown -R www-data:www-data /home/<yourUserName>/every
+			- ...
+			- sudo chown -R www-data:www-data /home/<yourUserName>/every/goddamn/folder/static
+			- sudo chmod -R 755 /home/<yourUserName>/every/goddamn/folder/static  (Don't know if this is needed for every other folder as well) 
+
+[Server does not reroute to https port anymore]
+	+ there was a Default file in here I deleted it => /etc/nginx/sites-enabled/default and traffic started getting rerouted to HTTPS automatically again
