@@ -18,3 +18,8 @@
         - path('ckeditorbrowse/', ckeditor_views.browse, name='ckeditor_browse'),
     + setting the CKEDITOR_UPLOAD_PATH to an existing folder in the MEDIA path
         - CKEDITOR_UPLOAD_PATH = 'OJ_Blog/pictures/'
+
+[Exposing the Blog to the Internet]
+    I could not access my website, it wass only possible if I typed the IPv4 of the instance followed by a port number
+	+ I installed nginx on the instance and then forwarded traffic from the port 80 (http) to my domain name
+	+ I created an A record with my domain name and gave it the IP of my instance
