@@ -34,7 +34,7 @@
 			- If there are many users that can access it you need to remove any inherited permissions
 				- icacls "path/to/Keys.pem" /inheritance:r /grant:r "%USERNAME%":"(R)"
 
-[Server could not find static files anymore + Permission denied]
+[Server could not find static files + Permission denied]
 	+ First added this to the nginx config file (/etc/nginx/nginx.conf):
 		"""
 		location /static/ {

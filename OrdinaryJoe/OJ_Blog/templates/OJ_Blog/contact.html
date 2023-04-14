@@ -1,0 +1,78 @@
+{% extends 'OJ_Blog/Base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <link rel="stylesheet" href="{% static 'OJ_Blog/css/contact.css' %}">
+
+  <div id="root-container">
+    <h1>Wir freuen uns auf Ihre Übersetzungsanfrage!</h1>
+    <p class="paragraph">Sie haben noch offene Fragen, benötigen weitere Informationen oder möchten uns Ihr Feedback geben?<br>
+      Wir sind an allen Werktagen von 08.00 bis 18.00 Uhr für Sie telefonisch oder per E-Mail erreichbar.<br>
+      Unsere kostenfreie Hotline: 0XXX XXX XXX
+    </p>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+      <div class="input-container" style="display:block; flex: 1; justify-content: left; align-items: left">
+        <div class="first-from-group" style="display:flex; flex-direction: row; justify-content: center; align-items: left">
+          <div class="form-group">
+            <label for="source_language">Quellsprache*</label>
+            <select class="form-control" id="source_language" name="source_language">
+              <option value="english">English</option>
+              <option value="french">French</option>
+              <option value="spanish">Spanish</option>
+              <option value="german">German</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="target_language">Zielsprache*</label>
+            <select class="form-control" id="target_language" name="target_language">
+              <option value="english">English</option>
+              <option value="french">French</option>
+              <option value="spanish">Spanish</option>
+              <option value="german">German</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="document">Datei hochladen (optional)</label>
+            <input type="file" class="form-control-file" id="document" name="document" style="margin:10px">
+          </div>
+        </div>
+
+        <div style="display:flex; flex-direction: row; justify-content: left; margin-left: 5%;">
+          <div class="form-group" >
+            <label for="remarks"> Anmerkung </label>
+            <textarea class="form-control-text" id="remarks" name="remarks" cols="100" rows="15" style="margin:10px"></textarea>
+          </div>
+        </div>
+
+        <div class="second-form-group" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="address">Adresse</label>
+            <input type="text" class="form-control" id="address" name="address" required>
+          </div>
+        </div>
+      </div>
+
+      <div class="last-group" style="margin-left: 1%; margin-left:1%;">
+        <div class="form-check" style="display:flex; flex-direction: row; justify-content: left; align-items: center">
+          <input type="checkbox" class="form-check-input" id="agree" name="agree" required>
+          <p class="form-check-label" for="agree">I agree that my data will be used for the purpose of this translation request.</p>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+
+    </form>
+
+  </div>
+{% endblock %}

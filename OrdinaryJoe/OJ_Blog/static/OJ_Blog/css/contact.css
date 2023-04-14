@@ -1,0 +1,47 @@
+#root-container    {
+
+    display: flex; /* Added to place the date and blog post next to each other */
+    flex-wrap: wrap; /* Added to wrap the posts when the viewport is small */
+    margin-bottom: 4%;
+
+    display: block;
+    background-color: #F0F8FF;
+    border-radius: 20px;
+    box-shadow: 0 3px 26px 0 rgba(0, 0, 0, 0.2);
+
+    grid-column-start: 1;
+    grid-column-end: 2;
+
+    margin: 5% 15% 5% 15%;
+    padding: 20px;
+    width: 60%; /* Added to occupy full width */
+}
+
+.form-group {
+    style="display:block;"
+    padding: 10%;
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-top: 5px; /* Adjust the margin as needed */
+    width: 120px; /* Adjust the width as needed */
+}
+
+.form-control{
+    width: 150px;; /* Adjust*/
+    margin: 10px;
+
+}
+
+#document{
+
+}
+
+label{
+    padding-right:26px;
+    white-space: nowrap;
+}
+
+.paragraph{
+    margin-left: 1%;
+    padding-left: 1%;
+}
