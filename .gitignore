@@ -6,6 +6,7 @@ db.sqlite3
 venv/
 OrdinaryJoe/staticfiles/
 OrdinaryJoe/OJ_Blog/migrations/
+OrdinaryJoe/Backups/
 
 # Extra files
 *.pyc
