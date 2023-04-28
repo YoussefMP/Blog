@@ -54,3 +54,8 @@
 
 [Server does not reroute to https port anymore]
 	+ there was a Default file in here I deleted it => /etc/nginx/sites-enabled/default and traffic started getting rerouted to HTTPS automatically again
+
+
+
+[CSRF Token: Forbidden csrf token is missing]
+	The subscription form does not work and returns the above mentioned error 

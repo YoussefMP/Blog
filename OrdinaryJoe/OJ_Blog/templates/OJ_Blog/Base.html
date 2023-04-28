@@ -1,13 +1,15 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
 	{% load static %}
 	<meta charset="UTF-8">
 	<title>Ordinary Joe</title>
+
 	<link rel="stylesheet" href="{% static 'OJ_Blog/css/Base.css' %}">
 	<link rel="stylesheet" href="{% static 'OJ_Blog/css/font.css' %}">
-
-
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="{% static 'OJ_Blog/scripts/HomePage/ValidateForm.js' %}"></script>
 </head>
 <body>
 
@@ -20,6 +22,23 @@
 	{% block content %}
 	{% endblock content %}
 
-
 </body>
+
+<footer>
+    <div class="f-item-con">
+        <div class="g-i-t">
+            <div class="footer-title">Get in Touch</div>
+            <form action="/" method="post" class="space-y-2">
+				{% csrf_token %}
+                <input type="text" name="g-name" class="g-inp" id="g-name" placeholder='Name' required/>
+                <input type="email" name="g-email" class="g-inp" id="g-email" placeholder='Email' required/>
+                <textarea type="text" name="g-msg" class="g-inp h-40 resize-none" id="g-msg"
+                    placeholder='Message...' required></textarea>
+                <button type="submit" class='f-btn'>Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class='cr-con'>The cover images on this website are made using Midjourney</div>
+</footer>
+
 </html>

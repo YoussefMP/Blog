@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*", "127.0.0.1"]
 
 
 # Application definition
@@ -54,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 
 ROOT_URLCONF = 'OrdinaryJoe.urls'
 
@@ -118,6 +119,19 @@ USE_I18N = True
 USE_TZ = True
 
 
+# Mailing functions
+# Use the console email backend for testing
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # or the SMTP server of your email provider
+EMAIL_PORT = 587  # or the SMTP port of your email provider
+EMAIL_USE_TLS = True  # or False if your email provider does not support TLS
+
+with open("credentials.txt", "r", encoding="utf-8") as cf:
+    EMAIL_HOST_USER = cf.readline().strip()
+    EMAIL_HOST_PASSWORD = cf.readline().strip()
+cf.close()
+
+
 # static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
@@ -143,5 +157,10 @@ CKEDITOR_CONFIGS = {
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
+DEBUG_PROPAGATE_EXCEPTIONS = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SESSION_COOKIE_SECURE = True
+
+# __________________________________ My changes
+# CSRF tokens
+# CSRF_USE_SESSIONS = True    # This saves the token in the session not in the cookie

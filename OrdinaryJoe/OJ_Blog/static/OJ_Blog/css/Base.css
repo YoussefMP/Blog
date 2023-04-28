@@ -6,7 +6,6 @@ html, body {
 body{
   max-width: 100%;
   overflow-x: hidden;
-  margin-bottom: 1%;
 }
 
 header {
@@ -34,6 +33,133 @@ header {
     background-attachment: fixed;
     background-blend-mode: multiply;
 }
+
 .banner:nth-of-type(1) {
     --img:  url("../pictures/MyDesk2.jpg");
+}
+
+
+/* ____ Footer Section */
+
+.space-y-2 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+}
+footer{
+    background-image: linear-gradient(to left bottom, #4f9c94, #188490, #006c89, #00527e, #00386c, #003567, #003163, #002e5e, #004067, #04516b, #2a606e, #496f72);
+}
+.f-item-con{
+    padding: 1.5rem 4rem;
+    display: block;
+    justify-content = center;
+    align-items= center;
+}
+
+footer .cr-con{
+    background-color: #232127;
+    color: white;
+    padding: 1rem 4rem;
+    text-align: center;
+}
+
+.g-i-t{
+    padding: 0 20%;
+    display: grid;
+    gap: 5px;
+
+    grid-column-start: 1;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
+footer .footer-title{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    color: white;
+    border-left: 4px solid #FFEECB;
+    padding-left: 1rem;
+    height: fit-content;
+}
+
+.g-i-t form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+form .g-inp{
+    padding: .25rem 1rem;
+    font-size: 16px;
+    margin: 1rem 0rem;
+}
+
+.f-btn{
+    background-color: #FFEECB;
+    border-radius: .5rem;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0.5rem 1rem; /* reduce padding to make it smaller */
+    font-size: 0.8rem; /* reduce font size to make it smaller */
+    margin-left: auto;
+    width: 75px;
+    color:black;
+    transition: all 0.3s ease-in-out; /* Add transition property */
+}
+
+#g-msg{
+    height: 175px;
+}
+
+.f-btn:hover{
+    background-color: #F1E2DD;
+    transform: translateY(-5px);
+}
+
+#g-mail{
+}
+
+/* Popup success message on message send */
+.popup{
+    position:fixed;
+    left: 50%;
+    top: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -moz-transform:translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+     transform: translate(-50%,-50%);
+
+    background-color: #FFF;
+    border-radius: 20px;
+    box-shadow: 0 3px 26px 0 rgba(0, 0, 0, 0.2);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    margin: 2% 1% 0% 2%;
+    padding: 20px;
+    width: 15%; /* Added to occupy full width */
+    height: 10%;
+
+    transition: all 0.3s ease-in-out; /* Add transition property */
+}
+
+@keyframes popup {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

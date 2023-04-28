@@ -3,23 +3,34 @@
 {% debug %}
 {% block content %}
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="{% static 'OJ_Blog/css/LandingPage.css' %}">
 <link rel="stylesheet" href="{% static 'OJ_Blog/css/font.css' %}">
 <!--<script src="{% static 'OJ_Blog/scripts/scrollAnimation.js' %}" type="module" defer></script>-->
+<script src="{% static 'OJ_Blog/scripts/randomColor.js' %}"></script>
+<script src="{% static 'OJ_Blog/scripts/HomePage/filter_tags.js' %}"></script>
+<script src="{% static 'OJ_Blog/scripts/HomePage/ValidateForm.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <div id="root">
+
     <!-- Welcome Picture -->
     <div class='banner'></div>
 
     <div class="class-tracker"></div>
 
     <div class="posts-frame" >
+
         <div id="posts-container">
             {% for post in posts %}
-                    <div class="post-container">
+                <div class="post-container" data-tag="{{ post.tags.all|join:' ' }}">
                         <div class="post">
                             <div class="img-content">
-                                <a href="{% url 'Post_Page' post.title %}"><img src="{{post.image.url}}"></a>
+                                {% if post.image %}
+                                    <a href="{% url 'Post_Page' post.title %}"><img src="{{post.image.url}}"></a>
+                                {% else %}
+                                    <a href="{% url 'Post_Page' post.title %}"><img src="{% static 'OJ_Blog/pictures/test_image.png' %}"></a>
+                                {% endif %}
                             </div>
                             <div class="text-content">
                                 <h1><a href="{% url 'Post_Page' post.title %}" style="color: black;">{{ post.title }}</a></h1>
@@ -29,7 +40,51 @@
                     </div>
             {% endfor %}
         </div>
+
+        <div class="right-side-container">
+            <div class="subscribe-box">
+                <p> If you find these posts interesting, think about subscribing to stay updated</p>
+                <form  method="post" class="subscribe-form" action="{% url 'blog-home' %}">
+                    {% csrf_token %}
+                    <input type="email" name="sub-email" class="new-user-email" placeholder='Email' required/>
+                    <button type="submit" class='subscribe-btn'>Submit</button>
+                </form>
+            </div>
+
+            <div id="tag-filter-container">
+                <div class="tag-filter-header">
+                    <i class="fas fa-tags"></i>
+                    <span>Tags</span>
+                </div>
+                <div class="tags-filter-body-container">
+                    <div class="tag-filter-applied">
+                        <span>Applied:</span>
+                        <div class="tag-filter-applied-list" style="margin: 5px;">
+                            <div class="tag-box">
+                                <p>None</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tag-filter-all" style="margin-bottom:5px;">
+                        <span>All tags:</span>
+                    </div>
+                    <div class="tag-filter-search">
+                        <input type="search" placeholder="Search tags" id="search-input">
+                        <a href="#" class="search-btn"><i class="fas fa-search"></i></a>
+                    </div>
+                    <div class="tag-filter-all-list" id="tag-list" style="overflow-y: hidden;">
+                        {% for tag in tags %}
+                            <div class="tag-box" style="background-color: ${randomColor()}">
+                                <p>{{tag.name}}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
+
 </div>
 {% endblock content %}
 
