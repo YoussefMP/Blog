@@ -7,6 +7,8 @@ venv/
 OrdinaryJoe/staticfiles/
 OrdinaryJoe/OJ_Blog/migrations/
 OrdinaryJoe/Backups/
+OrdinaryJoe/Keys/
 
 # Extra files
 *.pyc
+credentials.txt
